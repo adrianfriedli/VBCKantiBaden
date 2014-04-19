@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">VBC Kanti Baden</string>
+    <string name="title_section1">Eintrag 1</string>
+    <string name="title_section2">Eintrag 2</string>
+    <string name="title_section3">Eintrag 3</string>
+    <string name="navigation_drawer_open">Navigationsmenu öffnen</string>
+    <string name="navigation_drawer_close">Navigationsmenu schliessen</string>
+    <string name="action_example">Beispielaktion</string>
+    <string name="action_settings">Einstellungen</string>
+
+</resources>
