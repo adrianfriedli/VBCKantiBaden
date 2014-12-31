@@ -214,7 +214,7 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #include <string>
 
 
-#include "models/player.h"
+#include "models/core_player.h"
 
 
 #ifdef __cplusplus
@@ -223,25 +223,25 @@ extern "C" {
 
 SWIGEXPORT jlong JNICALL Java_ch_vbckantibaden_android_models_modelsJNI_new_1Player(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
-  Player *result = 0 ;
+  core::Player *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  result = (Player *)new Player();
-  *(Player **)&jresult = result; 
+  result = (core::Player *)new core::Player();
+  *(core::Player **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT jstring JNICALL Java_ch_vbckantibaden_android_models_modelsJNI_Player_1name(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
-  Player *arg1 = (Player *) 0 ;
+  core::Player *arg1 = (core::Player *) 0 ;
   std::string result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(Player **)&jarg1; 
+  arg1 = *(core::Player **)&jarg1; 
   result = (arg1)->name();
   jresult = jenv->NewStringUTF((&result)->c_str()); 
   return jresult;
@@ -249,11 +249,11 @@ SWIGEXPORT jstring JNICALL Java_ch_vbckantibaden_android_models_modelsJNI_Player
 
 
 SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_models_modelsJNI_delete_1Player(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  Player *arg1 = (Player *) 0 ;
+  core::Player *arg1 = (core::Player *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(Player **)&jarg1; 
+  arg1 = *(core::Player **)&jarg1; 
   delete arg1;
 }
 

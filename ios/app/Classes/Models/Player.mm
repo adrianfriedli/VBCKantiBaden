@@ -1,23 +1,22 @@
 //
-//  PlayerWrapper.m
+//  Player.m
 //  app
 //
 //  Created by Adrian Friedli on 28.12.14.
 //  Copyright (c) 2014 Adrian Friedli. All rights reserved.
 //
 
-#import "PlayerWrapper.h"
+#import "Player.h"
+#import "core_player.h"
 
-#import "player.h"
-
-@implementation PlayerWrapper {
-    Player* _player;
+@implementation Player {
+    core::Player* _player;
 }
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _player = new Player();
+        _player = new core::Player();
         if (!_player) {
             return nil;
         }

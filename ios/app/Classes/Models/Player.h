@@ -1,5 +1,5 @@
 //
-//  PlayerWrapper.h
+//  Player.h
 //  app
 //
 //  Created by Adrian Friedli on 28.12.14.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PlayerWrapper : NSObject
+@interface Player : NSObject
 
 @property (nonatomic, readonly, copy) NSString* name;
 
