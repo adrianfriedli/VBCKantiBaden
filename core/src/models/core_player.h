@@ -5,6 +5,8 @@
 
 namespace core {
 
+class PlayerObserver;
+  
 class Player {
 private:
   std::string name_;
@@ -13,6 +15,9 @@ public:
   Player();
 
   std::string name();
+  
+  void addObserver(const PlayerObserver& observer);
+  void removeObserver(const PlayerObserver& observer);
 }; 
 
 } // namespace core

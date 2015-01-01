@@ -19,7 +19,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import ch.vbckantibaden.android.models.Player;
+import ch.vbckantibaden.android.core.models.Player;
+import ch.vbckantibaden.android.core.models.PlayerObserver;
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -33,10 +34,6 @@ public class MainActivity extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
-
-    static {
-        System.loadLibrary("models");
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +110,7 @@ public class MainActivity extends ActionBarActivity
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements PlayerObserver {
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -139,6 +136,7 @@ public class MainActivity extends ActionBarActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             Player player = new Player();
+            player.addObserver(this);
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(player.name());
@@ -152,6 +150,10 @@ public class MainActivity extends ActionBarActivity
             ((MainActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
-    }
 
+        @Override
+        public void update(Player player) {
+            System.out.println("Yes, we can!");
+        }
+    }
 }

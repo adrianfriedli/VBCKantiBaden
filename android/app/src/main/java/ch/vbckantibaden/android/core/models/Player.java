@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package ch.vbckantibaden.android.models;
+package ch.vbckantibaden.android.core.models;
 
 public class Player {
   private long swigCPtr;
@@ -41,6 +41,20 @@ public class Player {
 
   public String name() {
     return modelsJNI.Player_name(swigCPtr, this);
+  }
+
+  public void addObserver(PlayerObserver observer) {
+    NativePlayerObserver n = models.makeNative(observer);
+    {
+      modelsJNI.Player_addObserver(swigCPtr, this, NativePlayerObserver.getCPtr(n), n);
+    }
+  }
+
+  public void removeObserver(PlayerObserver observer) {
+    NativePlayerObserver n = models.makeNative(observer);
+    {
+      modelsJNI.Player_removeObserver(swigCPtr, this, NativePlayerObserver.getCPtr(n), n);
+    }
   }
 
 }

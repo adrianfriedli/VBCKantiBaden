@@ -1,2 +1,2 @@
-#execute in android/app/src/main/ folder:
-swig3.0 -c++ -java -package ch.vbckantibaden.android.models -outdir java/ch/vbckantibaden/android/models -o jni/models_wrap.cpp jni/models.i
+#execute in android/app/src/main/jni folder:
+swig3.0 -c++ -java -package ch.vbckantibaden.android.core.models -outdir ../java/ch/vbckantibaden/android/core/models -o swig/models/player_wrap.cpp swig/models/player.i
