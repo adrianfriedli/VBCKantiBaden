@@ -4,20 +4,19 @@
 #include <string>
 
 namespace core {
-
-class PlayerObserver;
   
 class Player {
 private:
+  int key_;
+  int resourceId_;
   std::string name_;
 
 public:
-  Player();
+  Player(int key);
 
+  int key();
+  int resourceId();
   std::string name();
-  
-  void addObserver(const PlayerObserver& observer);
-  void removeObserver(const PlayerObserver& observer);
 }; 
 
 } // namespace core

@@ -6,8 +6,8 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package ch.vbckantibaden.android.core.models;
-
+package ch.vbckantibaden.android.core;
+import ch.vbckantibaden.android.listener.PlayerListener;
 public class Player {
   private long swigCPtr;
   protected boolean swigCMemOwn;
@@ -35,26 +35,28 @@ public class Player {
     }
   }
 
-  public Player() {
-    this(modelsJNI.new_Player(), true);
+  public void addListener(PlayerListener listener) {
+    NotificationCenterImpl.getInstance().addPlayerListener(listener, this);
+  }
+  
+  public void removeListener(PlayerListener listener) {
+    NotificationCenterImpl.getInstance().removePlayerListener(listener, this);
+  }
+
+  public Player(int key) {
+    this(modelsJNI.new_Player(key), true);
+  }
+
+  public int key() {
+    return modelsJNI.Player_key(swigCPtr, this);
+  }
+
+  public int resourceId() {
+    return modelsJNI.Player_resourceId(swigCPtr, this);
   }
 
   public String name() {
     return modelsJNI.Player_name(swigCPtr, this);
-  }
-
-  public void addObserver(PlayerObserver observer) {
-    NativePlayerObserver n = models.makeNative(observer);
-    {
-      modelsJNI.Player_addObserver(swigCPtr, this, NativePlayerObserver.getCPtr(n), n);
-    }
-  }
-
-  public void removeObserver(PlayerObserver observer) {
-    NativePlayerObserver n = models.makeNative(observer);
-    {
-      modelsJNI.Player_removeObserver(swigCPtr, this, NativePlayerObserver.getCPtr(n), n);
-    }
   }
 
 }

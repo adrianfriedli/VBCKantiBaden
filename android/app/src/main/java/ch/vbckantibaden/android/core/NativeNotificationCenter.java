@@ -6,18 +6,18 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package ch.vbckantibaden.android.core.models;
+package ch.vbckantibaden.android.core;
 
-public class NativePlayerObserver {
+public class NativeNotificationCenter {
   private long swigCPtr;
   protected boolean swigCMemOwn;
 
-  protected NativePlayerObserver(long cPtr, boolean cMemoryOwn) {
+  protected NativeNotificationCenter(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(NativePlayerObserver obj) {
+  protected static long getCPtr(NativeNotificationCenter obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
@@ -29,7 +29,7 @@ public class NativePlayerObserver {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        modelsJNI.delete_NativePlayerObserver(swigCPtr);
+        coreJNI.delete_NativeNotificationCenter(swigCPtr);
       }
       swigCPtr = 0;
     }
@@ -42,21 +42,25 @@ public class NativePlayerObserver {
 
   public void swigReleaseOwnership() {
     swigCMemOwn = false;
-    modelsJNI.NativePlayerObserver_change_ownership(this, swigCPtr, false);
+    coreJNI.NativeNotificationCenter_change_ownership(this, swigCPtr, false);
   }
 
   public void swigTakeOwnership() {
     swigCMemOwn = true;
-    modelsJNI.NativePlayerObserver_change_ownership(this, swigCPtr, true);
+    coreJNI.NativeNotificationCenter_change_ownership(this, swigCPtr, true);
   }
 
-  public void update(Player player) {
-    modelsJNI.NativePlayerObserver_update(swigCPtr, this, Player.getCPtr(player), player);
+  public void notify(int resourceId, int key) {
+    coreJNI.NativeNotificationCenter_notify(swigCPtr, this, resourceId, key);
   }
 
-  public NativePlayerObserver() {
-    this(modelsJNI.new_NativePlayerObserver(), true);
-    modelsJNI.NativePlayerObserver_director_connect(this, swigCPtr, swigCMemOwn, true);
+  public void notifyList(int resourceId) {
+    coreJNI.NativeNotificationCenter_notifyList(swigCPtr, this, resourceId);
+  }
+
+  public NativeNotificationCenter() {
+    this(coreJNI.new_NativeNotificationCenter(), true);
+    coreJNI.NativeNotificationCenter_director_connect(this, swigCPtr, swigCMemOwn, true);
   }
 
 }

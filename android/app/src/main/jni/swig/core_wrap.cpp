@@ -597,16 +597,13 @@ namespace Swig {
 
 namespace Swig {
   namespace {
-    jclass jclass_modelsJNI = NULL;
-    jmethodID director_methids[1];
+    jclass jclass_coreJNI = NULL;
+    jmethodID director_methids[2];
   }
 }
 
-#include "core/models/core_player.h"
-#include "core/models/core_player_observer.h"
-
-
-#include <string>
+#include "core/core_notification_center.h"
+#include "core/core_resource_manager.h"
 
 
 
@@ -614,25 +611,27 @@ namespace Swig {
  * C++ director class methods
  * --------------------------------------------------- */
 
-#include "player_wrap.h"
+#include "core_wrap.h"
 
-SwigDirector_NativePlayerObserver::SwigDirector_NativePlayerObserver(JNIEnv *jenv) : core::PlayerObserver(), Swig::Director(jenv) {
+SwigDirector_NativeNotificationCenter::SwigDirector_NativeNotificationCenter(JNIEnv *jenv) : core::NotificationCenter(), Swig::Director(jenv) {
 }
 
-void SwigDirector_NativePlayerObserver::update(core::Player *player) const {
+void SwigDirector_NativeNotificationCenter::notify(int resourceId, int key) const {
   JNIEnvWrapper swigjnienv(this) ;
   JNIEnv * jenv = swigjnienv.getJNIEnv() ;
   jobject swigjobj = (jobject) NULL ;
-  jlong jplayer = 0 ;
+  jint jresourceId  ;
+  jint jkey  ;
   
   if (!swig_override[0]) {
-    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method core::PlayerObserver::update.");
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method core::NotificationCenter::notify.");
     return;
   }
   swigjobj = swig_get_self(jenv);
   if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
-    *((core::Player **)&jplayer) = (core::Player *) player; 
-    jenv->CallStaticVoidMethod(Swig::jclass_modelsJNI, Swig::director_methids[0], swigjobj, jplayer);
+    jresourceId = (jint) resourceId;
+    jkey = (jint) key;
+    jenv->CallStaticVoidMethod(Swig::jclass_coreJNI, Swig::director_methids[0], swigjobj, jresourceId, jkey);
     jthrowable swigerror = jenv->ExceptionOccurred();
     if (swigerror) {
       jenv->ExceptionClear();
@@ -640,24 +639,53 @@ void SwigDirector_NativePlayerObserver::update(core::Player *player) const {
     }
     
   } else {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in core::PlayerObserver::update ");
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in core::NotificationCenter::notify ");
   }
   if (swigjobj) jenv->DeleteLocalRef(swigjobj);
 }
 
-SwigDirector_NativePlayerObserver::~SwigDirector_NativePlayerObserver() {
+void SwigDirector_NativeNotificationCenter::notifyList(int resourceId) const {
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  jint jresourceId  ;
+  
+  if (!swig_override[1]) {
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method core::NotificationCenter::notifyList.");
+    return;
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    jresourceId = (jint) resourceId;
+    jenv->CallStaticVoidMethod(Swig::jclass_coreJNI, Swig::director_methids[1], swigjobj, jresourceId);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      jenv->ExceptionClear();
+      throw Swig::DirectorException(jenv, swigerror);
+    }
+    
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in core::NotificationCenter::notifyList ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+}
+
+SwigDirector_NativeNotificationCenter::~SwigDirector_NativeNotificationCenter() {
   swig_disconnect_director_self("swigDirectorDisconnect");
 }
 
 
-void SwigDirector_NativePlayerObserver::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
+void SwigDirector_NativeNotificationCenter::swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global) {
   static struct {
     const char *mname;
     const char *mdesc;
     jmethodID base_methid;
   } methods[] = {
     {
-      "update", "(Lch/vbckantibaden/android/core/models/Player;)V", NULL 
+      "notify", "(II)V", NULL 
+    },
+    {
+      "notifyList", "(I)V", NULL 
     }
   };
   
@@ -665,12 +693,12 @@ void SwigDirector_NativePlayerObserver::swig_connect_director(JNIEnv *jenv, jobj
   
   if (swig_set_self(jenv, jself, swig_mem_own, weak_global)) {
     if (!baseclass) {
-      baseclass = jenv->FindClass("ch/vbckantibaden/android/core/models/NativePlayerObserver");
+      baseclass = jenv->FindClass("ch/vbckantibaden/android/core/NativeNotificationCenter");
       if (!baseclass) return;
       baseclass = (jclass) jenv->NewGlobalRef(baseclass);
     }
     bool derived = (jenv->IsSameObject(baseclass, jcls) ? false : true);
-    for (int i = 0; i < 1; ++i) {
+    for (int i = 0; i < 2; ++i) {
       if (!methods[i].base_methid) {
         methods[i].base_methid = jenv->GetMethodID(baseclass, methods[i].mname, methods[i].mdesc);
         if (!methods[i].base_methid) return;
@@ -691,128 +719,69 @@ void SwigDirector_NativePlayerObserver::swig_connect_director(JNIEnv *jenv, jobj
 extern "C" {
 #endif
 
-SWIGEXPORT jlong JNICALL Java_ch_vbckantibaden_android_core_models_modelsJNI_new_1Player(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  core::Player *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (core::Player *)new core::Player();
-  *(core::Player **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jstring JNICALL Java_ch_vbckantibaden_android_core_models_modelsJNI_Player_1name(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jstring jresult = 0 ;
-  core::Player *arg1 = (core::Player *) 0 ;
-  std::string result;
+SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_coreJNI_NativeNotificationCenter_1notify(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  core::NotificationCenter *arg1 = (core::NotificationCenter *) 0 ;
+  int arg2 ;
+  int arg3 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(core::Player **)&jarg1; 
-  result = (arg1)->name();
-  jresult = jenv->NewStringUTF((&result)->c_str()); 
-  return jresult;
+  arg1 = *(core::NotificationCenter **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  ((core::NotificationCenter const *)arg1)->notify(arg2,arg3);
 }
 
 
-SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_models_modelsJNI_Player_1addObserver(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
-  core::Player *arg1 = (core::Player *) 0 ;
-  core::PlayerObserver *arg2 = 0 ;
+SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_coreJNI_NativeNotificationCenter_1notifyList(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  core::NotificationCenter *arg1 = (core::NotificationCenter *) 0 ;
+  int arg2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  (void)jarg2_;
-  arg1 = *(core::Player **)&jarg1; 
-  arg2 = *(core::PlayerObserver **)&jarg2;
-  if (!arg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "core::PlayerObserver const & reference is null");
-    return ;
-  } 
-  (arg1)->addObserver((core::PlayerObserver const &)*arg2);
+  arg1 = *(core::NotificationCenter **)&jarg1; 
+  arg2 = (int)jarg2; 
+  ((core::NotificationCenter const *)arg1)->notifyList(arg2);
 }
 
 
-SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_models_modelsJNI_Player_1removeObserver(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
-  core::Player *arg1 = (core::Player *) 0 ;
-  core::PlayerObserver *arg2 = 0 ;
+SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_coreJNI_delete_1NativeNotificationCenter(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  core::NotificationCenter *arg1 = (core::NotificationCenter *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  (void)jarg1_;
-  (void)jarg2_;
-  arg1 = *(core::Player **)&jarg1; 
-  arg2 = *(core::PlayerObserver **)&jarg2;
-  if (!arg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "core::PlayerObserver const & reference is null");
-    return ;
-  } 
-  (arg1)->removeObserver((core::PlayerObserver const &)*arg2);
-}
-
-
-SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_models_modelsJNI_delete_1Player(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  core::Player *arg1 = (core::Player *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(core::Player **)&jarg1; 
+  arg1 = *(core::NotificationCenter **)&jarg1; 
   delete arg1;
 }
 
 
-SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_models_modelsJNI_NativePlayerObserver_1update(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
-  core::PlayerObserver *arg1 = (core::PlayerObserver *) 0 ;
-  core::Player *arg2 = (core::Player *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  (void)jarg2_;
-  arg1 = *(core::PlayerObserver **)&jarg1; 
-  arg2 = *(core::Player **)&jarg2; 
-  ((core::PlayerObserver const *)arg1)->update(arg2);
-}
-
-
-SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_models_modelsJNI_delete_1NativePlayerObserver(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  core::PlayerObserver *arg1 = (core::PlayerObserver *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(core::PlayerObserver **)&jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_ch_vbckantibaden_android_core_models_modelsJNI_new_1NativePlayerObserver(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_ch_vbckantibaden_android_core_coreJNI_new_1NativeNotificationCenter(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
-  core::PlayerObserver *result = 0 ;
+  core::NotificationCenter *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  result = (core::PlayerObserver *)new SwigDirector_NativePlayerObserver(jenv);
-  *(core::PlayerObserver **)&jresult = result; 
+  result = (core::NotificationCenter *)new SwigDirector_NativeNotificationCenter(jenv);
+  *(core::NotificationCenter **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_models_modelsJNI_NativePlayerObserver_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
-  core::PlayerObserver *obj = *((core::PlayerObserver **)&objarg);
+SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_coreJNI_NativeNotificationCenter_1director_1connect(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jswig_mem_own, jboolean jweak_global) {
+  core::NotificationCenter *obj = *((core::NotificationCenter **)&objarg);
   (void)jcls;
-  SwigDirector_NativePlayerObserver *director = dynamic_cast<SwigDirector_NativePlayerObserver *>(obj);
+  SwigDirector_NativeNotificationCenter *director = dynamic_cast<SwigDirector_NativeNotificationCenter *>(obj);
   if (director) {
     director->swig_connect_director(jenv, jself, jenv->GetObjectClass(jself), (jswig_mem_own == JNI_TRUE), (jweak_global == JNI_TRUE));
   }
 }
 
 
-SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_models_modelsJNI_NativePlayerObserver_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
-  core::PlayerObserver *obj = *((core::PlayerObserver **)&objarg);
-  SwigDirector_NativePlayerObserver *director = dynamic_cast<SwigDirector_NativePlayerObserver *>(obj);
+SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_coreJNI_NativeNotificationCenter_1change_1ownership(JNIEnv *jenv, jclass jcls, jobject jself, jlong objarg, jboolean jtake_or_release) {
+  core::NotificationCenter *obj = *((core::NotificationCenter **)&objarg);
+  SwigDirector_NativeNotificationCenter *director = dynamic_cast<SwigDirector_NativeNotificationCenter *>(obj);
   (void)jcls;
   if (director) {
     director->swig_java_change_ownership(jenv, jself, jtake_or_release ? true : false);
@@ -820,19 +789,79 @@ SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_models_modelsJNI_Nati
 }
 
 
-SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_models_modelsJNI_swig_1module_1init(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_ch_vbckantibaden_android_core_coreJNI_new_1ResourceManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  core::NotificationCenter *arg1 = 0 ;
+  core::ResourceManager *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(core::NotificationCenter **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "core::NotificationCenter const & reference is null");
+    return 0;
+  } 
+  result = (core::ResourceManager *)new core::ResourceManager((core::NotificationCenter const &)*arg1);
+  *(core::ResourceManager **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_coreJNI_delete_1ResourceManager(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  core::ResourceManager *arg1 = (core::ResourceManager *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(core::ResourceManager **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_ch_vbckantibaden_android_core_coreJNI_ResourceManager_1getPlayerForKey(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  core::ResourceManager *arg1 = (core::ResourceManager *) 0 ;
+  int arg2 ;
+  core::Player *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(core::ResourceManager **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (core::Player *)(arg1)->getPlayerForKey(arg2);
+  *(core::Player **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_coreJNI_ResourceManager_1notifyTestPlayer(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  core::ResourceManager *arg1 = (core::ResourceManager *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(core::ResourceManager **)&jarg1; 
+  (arg1)->notifyTestPlayer();
+}
+
+
+SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_coreJNI_swig_1module_1init(JNIEnv *jenv, jclass jcls) {
   int i;
   
   static struct {
     const char *method;
     const char *signature;
-  } methods[1] = {
+  } methods[2] = {
     {
-      "SwigDirector_NativePlayerObserver_update", "(Lch/vbckantibaden/android/core/models/NativePlayerObserver;J)V" 
+      "SwigDirector_NativeNotificationCenter_notify", "(Lch/vbckantibaden/android/core/NativeNotificationCenter;II)V" 
+    },
+    {
+      "SwigDirector_NativeNotificationCenter_notifyList", "(Lch/vbckantibaden/android/core/NativeNotificationCenter;I)V" 
     }
   };
-  Swig::jclass_modelsJNI = (jclass) jenv->NewGlobalRef(jcls);
-  if (!Swig::jclass_modelsJNI) return;
+  Swig::jclass_coreJNI = (jclass) jenv->NewGlobalRef(jcls);
+  if (!Swig::jclass_coreJNI) return;
   for (i = 0; i < (int) (sizeof(methods)/sizeof(methods[0])); ++i) {
     Swig::director_methids[i] = jenv->GetStaticMethodID(jcls, methods[i].method, methods[i].signature);
     if (!Swig::director_methids[i]) return;

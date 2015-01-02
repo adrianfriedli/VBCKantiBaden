@@ -8,22 +8,23 @@
  * interface file instead.
  * ----------------------------------------------------------------------------- */
 
-#ifndef SWIG_models_WRAP_H_
-#define SWIG_models_WRAP_H_
+#ifndef SWIG_core_WRAP_H_
+#define SWIG_core_WRAP_H_
 
-class SwigDirector_NativePlayerObserver : public core::PlayerObserver, public Swig::Director {
+class SwigDirector_NativeNotificationCenter : public core::NotificationCenter, public Swig::Director {
 
 public:
     void swig_connect_director(JNIEnv *jenv, jobject jself, jclass jcls, bool swig_mem_own, bool weak_global);
-    SwigDirector_NativePlayerObserver(JNIEnv *jenv);
-    virtual void update(core::Player *player) const;
-    virtual ~SwigDirector_NativePlayerObserver();
+    SwigDirector_NativeNotificationCenter(JNIEnv *jenv);
+    virtual void notify(int resourceId, int key) const;
+    virtual void notifyList(int resourceId) const;
+    virtual ~SwigDirector_NativeNotificationCenter();
 public:
     bool swig_overrides(int n) {
-      return (n < 1 ? swig_override[n] : false);
+      return (n < 2 ? swig_override[n] : false);
     }
 protected:
-    bool swig_override[1];
+    bool swig_override[2];
 };
 
 
