@@ -10,11 +10,11 @@
 %feature("director") NotificationCenter;
 
 %rename(NativeNotificationCenter) NotificationCenter; 
-%typemap(jstype) const core::NotificationCenter& "NotificationCenter";
+%typemap(jstype) const core::NotificationCenter* "NotificationCenter";
 %typemap(javainterfaces) NotificationCenter "NotificationCenter"
 %typemap(javain,pgcppname="n",
          pre="    NativeNotificationCenter n = core.makeNative($javainput);")
-         const core::NotificationCenter& "NativeNotificationCenter.getCPtr(n)"
+         const core::NotificationCenter* "NativeNotificationCenter.getCPtr(n)"
 
 %include "core/core_notification_center.h"
 %include "core/core_resource_manager.h"

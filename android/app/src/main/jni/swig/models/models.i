@@ -2,9 +2,12 @@
 
 %{
 #include "core/models/core_player.h"
+#include <memory>
 %}
 
 %include "std_string.i"
+%include <std_shared_ptr.i>
+%shared_ptr(core::Player)
 
 %typemap(javaimports) core::Player "import ch.vbckantibaden.android.listener.$javaclassnameListener;"
 

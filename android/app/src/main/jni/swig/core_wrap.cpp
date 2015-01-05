@@ -791,18 +791,14 @@ SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_coreJNI_NativeNotific
 
 SWIGEXPORT jlong JNICALL Java_ch_vbckantibaden_android_core_coreJNI_new_1ResourceManager(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  core::NotificationCenter *arg1 = 0 ;
+  core::NotificationCenter *arg1 = (core::NotificationCenter *) 0 ;
   core::ResourceManager *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(core::NotificationCenter **)&jarg1;
-  if (!arg1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "core::NotificationCenter const & reference is null");
-    return 0;
-  } 
-  result = (core::ResourceManager *)new core::ResourceManager((core::NotificationCenter const &)*arg1);
+  arg1 = *(core::NotificationCenter **)&jarg1; 
+  result = (core::ResourceManager *)new core::ResourceManager((core::NotificationCenter const *)arg1);
   *(core::ResourceManager **)&jresult = result; 
   return jresult;
 }
@@ -822,15 +818,15 @@ SWIGEXPORT jlong JNICALL Java_ch_vbckantibaden_android_core_coreJNI_ResourceMana
   jlong jresult = 0 ;
   core::ResourceManager *arg1 = (core::ResourceManager *) 0 ;
   int arg2 ;
-  core::Player *result = 0 ;
+  std::shared_ptr< core::Player > result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(core::ResourceManager **)&jarg1; 
   arg2 = (int)jarg2; 
-  result = (core::Player *)(arg1)->getPlayerForKey(arg2);
-  *(core::Player **)&jresult = result; 
+  result = (arg1)->getPlayerForKey(arg2);
+  *(std::shared_ptr< core::Player > **)&jresult = result ? new std::shared_ptr< core::Player >(result) : 0; 
   return jresult;
 }
 

@@ -10,8 +10,8 @@ package ch.vbckantibaden.android.core;
 
 public class modelsJNI {
   public final static native long new_Player(int jarg1);
+  public final static native void delete_Player(long jarg1);
   public final static native int Player_key(long jarg1, Player jarg1_);
   public final static native int Player_resourceId(long jarg1, Player jarg1_);
   public final static native String Player_name(long jarg1, Player jarg1_);
-  public final static native void delete_Player(long jarg1);
 }

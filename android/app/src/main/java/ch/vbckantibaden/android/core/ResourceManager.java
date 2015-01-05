@@ -46,7 +46,7 @@ public class ResourceManager {
 
   public Player getPlayerForKey(int key) {
     long cPtr = coreJNI.ResourceManager_getPlayerForKey(swigCPtr, this, key);
-    return (cPtr == 0) ? null : new Player(cPtr, false);
+    return (cPtr == 0) ? null : new Player(cPtr, true);
   }
 
   public void notifyTestPlayer() {

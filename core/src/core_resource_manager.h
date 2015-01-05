@@ -19,6 +19,8 @@
 #ifndef CORE_RESOURCE_MANAGER_H_
 #define CORE_RESOURCE_MANAGER_H_
 
+#include <memory>
+
 namespace core {
 
 class NotificationCenter;
@@ -27,11 +29,11 @@ class Player;
 class ResourceManager {
 private:
   const NotificationCenter* notificationCenter;
-  Player* testPlayer;
+  std::shared_ptr<Player> testPlayer;
 public:
-  ResourceManager(const NotificationCenter& notificationCenter);
+  ResourceManager(const NotificationCenter* notificationCenter);
   ~ResourceManager();
-  Player* getPlayerForKey(int key);
+  std::shared_ptr<Player> getPlayerForKey(int key);
   void notifyTestPlayer();
 };
 

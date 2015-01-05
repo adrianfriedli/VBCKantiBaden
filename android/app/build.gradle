@@ -14,7 +14,7 @@ android {
         ndk {
             moduleName "core"
             stl "gnustl_static"
-            cFlags "-fexceptions -frtti"
+            cFlags "-std=c++11 -fexceptions -frtti"
         }
 
     }

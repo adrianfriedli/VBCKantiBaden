@@ -10,7 +10,7 @@ package ch.vbckantibaden.android.core;
 import ch.vbckantibaden.android.listener.PlayerListener;
 public class Player {
   private long swigCPtr;
-  protected boolean swigCMemOwn;
+  private boolean swigCMemOwn;
 
   protected Player(long cPtr, boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;

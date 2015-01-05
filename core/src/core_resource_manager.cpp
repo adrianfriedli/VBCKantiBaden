@@ -22,18 +22,15 @@
 
 namespace core {
 
-ResourceManager::ResourceManager(const NotificationCenter& notificationCenter) {
-  this->notificationCenter = &notificationCenter;
+ResourceManager::ResourceManager(const NotificationCenter* notificationCenter) {
+  this->notificationCenter = notificationCenter;
 }
 
 ResourceManager::~ResourceManager() {
-  if (testPlayer != 0) {
-    delete testPlayer;
-  }
 }
 
-Player* ResourceManager::getPlayerForKey(int key) {
-  testPlayer = new Player(key);
+std::shared_ptr<Player> ResourceManager::getPlayerForKey(int key) {
+  testPlayer = std::make_shared<Player>(key);
   return testPlayer;
 }
 
