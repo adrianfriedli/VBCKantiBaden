@@ -40,7 +40,7 @@ public:
 	if (self) {
 		_notificationCenterProxy = new NotificationCenterProxy(notificationCenter);
 		if (_notificationCenterProxy) {
-			_resourceManager = new core::ResourceManager(*_notificationCenterProxy);
+			_resourceManager = new core::ResourceManager(_notificationCenterProxy);
 		}
 		if (!_resourceManager) {
 			return nil;
@@ -55,7 +55,7 @@ public:
 }
 
 - (Player *)getPlayerForKey:(int32_t)key {
-	core::Player* player = _resourceManager->getPlayerForKey(key);
+	std::shared_ptr<core::Player> player = _resourceManager->getPlayerForKey(key);
 	return [[Player alloc] initWithPlayer:player];
 }
 

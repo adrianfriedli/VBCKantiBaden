@@ -11,6 +11,6 @@
 
 @interface Player (Internal)
 
-- (instancetype)initWithPlayer:(core::Player *)player;
+- (instancetype)initWithPlayer:(std::shared_ptr<core::Player>)player;
 
 @end

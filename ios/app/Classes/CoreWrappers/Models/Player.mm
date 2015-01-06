@@ -14,11 +14,15 @@
 #import "PlayerListener.h"
 
 @implementation Player {
-	core::Player* _player;
+	std::shared_ptr<core::Player> _player;
 }
 
 #pragma mark - Object Lifecycle
-- (instancetype)initWithPlayer:(core::Player *)player {
+- (instancetype)initWithKey:(int32_t)key {
+	return [self initWithPlayer:std::make_shared<core::Player>(key)];
+}
+
+- (instancetype)initWithPlayer:(std::shared_ptr<core::Player>)player {
 	self = [super init];
 	if (self) {
 		_player = player;
