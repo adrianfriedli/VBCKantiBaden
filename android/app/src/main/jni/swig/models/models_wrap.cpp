@@ -211,50 +211,107 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #define SWIG_contract_assert(nullreturn, expr, msg) if (!(expr)) {SWIG_JavaThrowException(jenv, SWIG_JavaIllegalArgumentException, msg); return nullreturn; } else
 
 
+#include "core/models/core_player.h"
+#include <memory>
+
+
 #include <string>
 
 
-#include "models/core_player.h"
+struct SWIG_null_deleter {
+  void operator() (void const *) const {
+  }
+};
+#define SWIG_NO_NULL_DELETER_0 , SWIG_null_deleter()
+#define SWIG_NO_NULL_DELETER_1
+#define SWIG_NO_NULL_DELETER_SWIG_POINTER_NEW
+#define SWIG_NO_NULL_DELETER_SWIG_POINTER_OWN
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-SWIGEXPORT jlong JNICALL Java_ch_vbckantibaden_android_models_modelsJNI_new_1Player(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_ch_vbckantibaden_android_core_modelsJNI_new_1Player(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
+  int arg1 ;
   core::Player *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  result = (core::Player *)new core::Player();
-  *(core::Player **)&jresult = result; 
+  arg1 = (int)jarg1; 
+  result = (core::Player *)new core::Player(arg1);
+  
+  *(std::shared_ptr<  core::Player > **)&jresult = result ? new std::shared_ptr<  core::Player >(result SWIG_NO_NULL_DELETER_1) : 0;
+  
   return jresult;
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ch_vbckantibaden_android_models_modelsJNI_Player_1name(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_core_modelsJNI_delete_1Player(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  core::Player *arg1 = (core::Player *) 0 ;
+  std::shared_ptr< core::Player > *smartarg1 = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  
+  smartarg1 = *(std::shared_ptr<  core::Player > **)&jarg1;
+  arg1 = (core::Player *)(smartarg1 ? smartarg1->get() : 0); 
+  (void)arg1; delete smartarg1;
+}
+
+
+SWIGEXPORT jint JNICALL Java_ch_vbckantibaden_android_core_modelsJNI_Player_1key(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  core::Player *arg1 = (core::Player *) 0 ;
+  std::shared_ptr< core::Player > *smartarg1 = 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  
+  smartarg1 = *(std::shared_ptr<  core::Player > **)&jarg1;
+  arg1 = (core::Player *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (int)(arg1)->key();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_ch_vbckantibaden_android_core_modelsJNI_Player_1resourceId(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  core::Player *arg1 = (core::Player *) 0 ;
+  std::shared_ptr< core::Player > *smartarg1 = 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  
+  smartarg1 = *(std::shared_ptr<  core::Player > **)&jarg1;
+  arg1 = (core::Player *)(smartarg1 ? smartarg1->get() : 0); 
+  result = (int)(arg1)->resourceId();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_ch_vbckantibaden_android_core_modelsJNI_Player_1name(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   core::Player *arg1 = (core::Player *) 0 ;
+  std::shared_ptr< core::Player > *smartarg1 = 0 ;
   std::string result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(core::Player **)&jarg1; 
+  
+  smartarg1 = *(std::shared_ptr<  core::Player > **)&jarg1;
+  arg1 = (core::Player *)(smartarg1 ? smartarg1->get() : 0); 
   result = (arg1)->name();
   jresult = jenv->NewStringUTF((&result)->c_str()); 
   return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_ch_vbckantibaden_android_models_modelsJNI_delete_1Player(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  core::Player *arg1 = (core::Player *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(core::Player **)&jarg1; 
-  delete arg1;
 }
 
 

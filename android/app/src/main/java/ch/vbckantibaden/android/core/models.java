@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package ch.vbckantibaden.android.models;
+package ch.vbckantibaden.android.core;
 
 public class models {
 }

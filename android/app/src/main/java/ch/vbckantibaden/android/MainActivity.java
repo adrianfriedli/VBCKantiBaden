@@ -19,7 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import ch.vbckantibaden.android.models.Player;
+import ch.vbckantibaden.android.core.Player;
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -34,9 +34,7 @@ public class MainActivity extends ActionBarActivity
      */
     private CharSequence mTitle;
 
-    static {
-        System.loadLibrary("models");
-    }
+    private Test mTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +44,7 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
+        mTest = new Test();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -138,7 +137,7 @@ public class MainActivity extends ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            Player player = new Player();
+            Player player = new Player(123);
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(player.name());

@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A80296F1A58198D007F715F /* NotificationCenterImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A80296E1A58198D007F715F /* NotificationCenterImpl.m */; };
 		3A809EAF1A4EAE8800303243 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A809EAD1A4EAE8800303243 /* Main.storyboard */; };
 		3A809EB11A4EAE8800303243 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A809EB01A4EAE8800303243 /* Images.xcassets */; };
 		3A809EB41A4EAE8800303243 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A809EB21A4EAE8800303243 /* LaunchScreen.xib */; };
 		3A809EC01A4EAE8800303243 /* appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A809EBF1A4EAE8800303243 /* appTests.swift */; };
+		3ABB9B381A580B62005A7488 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC696591A58063A005557A6 /* Test.swift */; };
+		3AC2621B1A586483001E173B /* ModelObserverKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2621A1A586483001E173B /* ModelObserverKey.m */; };
+		3AC2621F1A586871001E173B /* ModelObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2621E1A586871001E173B /* ModelObserver.m */; };
+		3AC696441A57FABA005557A6 /* core_resource_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6963E1A57FABA005557A6 /* core_resource_manager.cpp */; };
+		3AC696451A57FABA005557A6 /* core_player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AC696411A57FABA005557A6 /* core_player.cpp */; };
+		3AC6964B1A57FD4D005557A6 /* Player.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6964A1A57FD4D005557A6 /* Player.mm */; };
+		3AC696511A57FEA0005557A6 /* ResourceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3AC696501A57FEA0005557A6 /* ResourceManager.mm */; };
 		3AE1050A1A5020BC0098962E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE105071A5020BC0098962E /* AppDelegate.swift */; };
 		3AE1050B1A5020BC0098962E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE105081A5020BC0098962E /* FirstViewController.swift */; };
 		3AE1050C1A5020BC0098962E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE105091A5020BC0098962E /* SecondViewController.swift */; };
-		3AE105111A5021D50098962E /* Player.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3AE105101A5021D50098962E /* Player.mm */; };
-		3AE105151A5022940098962E /* core_player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AE105131A5022940098962E /* core_player.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +35,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A8029661A581630007F715F /* NotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationCenter.h; sourceTree = "<group>"; };
+		3A80296A1A581837007F715F /* PlayerListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerListener.h; sourceTree = "<group>"; };
+		3A80296D1A58198D007F715F /* NotificationCenterImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationCenterImpl.h; sourceTree = "<group>"; };
+		3A80296E1A58198D007F715F /* NotificationCenterImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationCenterImpl.m; sourceTree = "<group>"; };
+		3A8029701A5820B0007F715F /* Player+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Player+Internal.h"; sourceTree = "<group>"; };
 		3A809EA21A4EAE8800303243 /* app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A809EA61A4EAE8800303243 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A809EAE1A4EAE8800303243 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -37,14 +48,25 @@
 		3A809EB91A4EAE8800303243 /* appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A809EBE1A4EAE8800303243 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A809EBF1A4EAE8800303243 /* appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appTests.swift; sourceTree = "<group>"; };
+		3AC262191A586483001E173B /* ModelObserverKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObserverKey.h; sourceTree = "<group>"; };
+		3AC2621A1A586483001E173B /* ModelObserverKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelObserverKey.m; sourceTree = "<group>"; };
+		3AC2621C1A586521001E173B /* ModelListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelListener.h; sourceTree = "<group>"; };
+		3AC2621D1A586871001E173B /* ModelObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelObserver.h; sourceTree = "<group>"; };
+		3AC2621E1A586871001E173B /* ModelObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelObserver.m; sourceTree = "<group>"; };
+		3AC6963D1A57FABA005557A6 /* core_notification_center.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_notification_center.h; sourceTree = "<group>"; };
+		3AC6963E1A57FABA005557A6 /* core_resource_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = core_resource_manager.cpp; sourceTree = "<group>"; };
+		3AC6963F1A57FABA005557A6 /* core_resource_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_resource_manager.h; sourceTree = "<group>"; };
+		3AC696411A57FABA005557A6 /* core_player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = core_player.cpp; sourceTree = "<group>"; };
+		3AC696421A57FABA005557A6 /* core_player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_player.h; sourceTree = "<group>"; };
+		3AC696471A57FD4D005557A6 /* app-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "app-Bridging-Header.h"; sourceTree = "<group>"; };
+		3AC696491A57FD4D005557A6 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		3AC6964A1A57FD4D005557A6 /* Player.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Player.mm; sourceTree = "<group>"; };
+		3AC6964F1A57FEA0005557A6 /* ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceManager.h; sourceTree = "<group>"; };
+		3AC696501A57FEA0005557A6 /* ResourceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourceManager.mm; sourceTree = "<group>"; };
+		3AC696591A58063A005557A6 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		3AE105071A5020BC0098962E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AE105081A5020BC0098962E /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		3AE105091A5020BC0098962E /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		3AE1050E1A5021D50098962E /* app-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "app-Bridging-Header.h"; sourceTree = "<group>"; };
-		3AE1050F1A5021D50098962E /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
-		3AE105101A5021D50098962E /* Player.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Player.mm; sourceTree = "<group>"; };
-		3AE105131A5022940098962E /* core_player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = core_player.cpp; sourceTree = "<group>"; };
-		3AE105141A5022940098962E /* core_player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core_player.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A8029691A581828007F715F /* Listener */ = {
+			isa = PBXGroup;
+			children = (
+				3A80296A1A581837007F715F /* PlayerListener.h */,
+				3AC2621C1A586521001E173B /* ModelListener.h */,
+			);
+			path = Listener;
+			sourceTree = "<group>";
+		};
 		3A809E991A4EAE8800303243 = {
 			isa = PBXGroup;
 			children = (
@@ -120,36 +151,67 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3AE105061A5020BC0098962E /* Classes */ = {
+		3AC6963B1A57FABA005557A6 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				3AE1050D1A5021D50098962E /* Models */,
-				3AE105071A5020BC0098962E /* AppDelegate.swift */,
-				3AE105081A5020BC0098962E /* FirstViewController.swift */,
-				3AE105091A5020BC0098962E /* SecondViewController.swift */,
+				3AC696401A57FABA005557A6 /* models */,
+				3AC6963D1A57FABA005557A6 /* core_notification_center.h */,
+				3AC6963E1A57FABA005557A6 /* core_resource_manager.cpp */,
+				3AC6963F1A57FABA005557A6 /* core_resource_manager.h */,
 			);
-			path = Classes;
+			name = Core;
+			path = ../../../core/src;
 			sourceTree = "<group>";
 		};
-		3AE1050D1A5021D50098962E /* Models */ = {
+		3AC696401A57FABA005557A6 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				3AE105121A5022940098962E /* models */,
-				3AE1050E1A5021D50098962E /* app-Bridging-Header.h */,
-				3AE1050F1A5021D50098962E /* Player.h */,
-				3AE105101A5021D50098962E /* Player.mm */,
+				3AC696411A57FABA005557A6 /* core_player.cpp */,
+				3AC696421A57FABA005557A6 /* core_player.h */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		3AC696461A57FD4D005557A6 /* CoreWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				3AC696481A57FD4D005557A6 /* Models */,
+				3AC696471A57FD4D005557A6 /* app-Bridging-Header.h */,
+				3AC2621D1A586871001E173B /* ModelObserver.h */,
+				3AC2621E1A586871001E173B /* ModelObserver.m */,
+				3AC262191A586483001E173B /* ModelObserverKey.h */,
+				3AC2621A1A586483001E173B /* ModelObserverKey.m */,
+				3A8029661A581630007F715F /* NotificationCenter.h */,
+				3A80296D1A58198D007F715F /* NotificationCenterImpl.h */,
+				3A80296E1A58198D007F715F /* NotificationCenterImpl.m */,
+				3AC6964F1A57FEA0005557A6 /* ResourceManager.h */,
+				3AC696501A57FEA0005557A6 /* ResourceManager.mm */,
+			);
+			path = CoreWrappers;
+			sourceTree = "<group>";
+		};
+		3AC696481A57FD4D005557A6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3AC696491A57FD4D005557A6 /* Player.h */,
+				3AC6964A1A57FD4D005557A6 /* Player.mm */,
+				3A8029701A5820B0007F715F /* Player+Internal.h */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		3AE105121A5022940098962E /* models */ = {
+		3AE105061A5020BC0098962E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3AE105131A5022940098962E /* core_player.cpp */,
-				3AE105141A5022940098962E /* core_player.h */,
+				3AC6963B1A57FABA005557A6 /* Core */,
+				3AC696461A57FD4D005557A6 /* CoreWrappers */,
+				3A8029691A581828007F715F /* Listener */,
+				3AE105071A5020BC0098962E /* AppDelegate.swift */,
+				3AE105081A5020BC0098962E /* FirstViewController.swift */,
+				3AE105091A5020BC0098962E /* SecondViewController.swift */,
+				3AC696591A58063A005557A6 /* Test.swift */,
 			);
-			name = models;
-			path = ../../../../core/src/models;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,11 +314,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AC6964B1A57FD4D005557A6 /* Player.mm in Sources */,
+				3AC2621F1A586871001E173B /* ModelObserver.m in Sources */,
 				3AE1050C1A5020BC0098962E /* SecondViewController.swift in Sources */,
-				3AE105151A5022940098962E /* core_player.cpp in Sources */,
+				3A80296F1A58198D007F715F /* NotificationCenterImpl.m in Sources */,
+				3AC696451A57FABA005557A6 /* core_player.cpp in Sources */,
+				3ABB9B381A580B62005A7488 /* Test.swift in Sources */,
 				3AE1050A1A5020BC0098962E /* AppDelegate.swift in Sources */,
-				3AE105111A5021D50098962E /* Player.mm in Sources */,
 				3AE1050B1A5020BC0098962E /* FirstViewController.swift in Sources */,
+				3AC2621B1A586483001E173B /* ModelObserverKey.m in Sources */,
+				3AC696441A57FABA005557A6 /* core_resource_manager.cpp in Sources */,
+				3AC696511A57FEA0005557A6 /* ResourceManager.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +404,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "app/Classes/Models/app-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "app/Classes/CoreWrappers/app-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -372,7 +440,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "app/Classes/Models/app-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "app/Classes/CoreWrappers/app-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

@@ -2,9 +2,20 @@
 
 namespace core {
 
-Player::Player() {
+Player::Player(int key) {
+  key_ = key;
+  resourceId_ = 42;
   name_ = "my name";
 }
+
+int Player::key() {
+  return key_;
+}
+
+int Player::resourceId() {
+  return resourceId_;
+}
+
 
 std::string Player::name() {
   return name_;

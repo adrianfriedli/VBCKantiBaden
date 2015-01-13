@@ -1,2 +1,0 @@
-#execute in android/app/src/main/ folder:
-swig3.0 -c++ -java -package ch.vbckantibaden.android.models -outdir java/ch/vbckantibaden/android/models -o jni/models_wrap.cpp jni/models.i
